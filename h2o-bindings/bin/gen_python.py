@@ -183,8 +183,6 @@ def gen_module(schema, algo):
     yield "    def __init__(self, **kwargs):"
     yield "        super(%s, self).__init__()" % classname
     yield "        self._parms = {}"
-    yield "        names_list = {%s}" % bi.wrap(", ".join('"%s"' % p for p in param_names),
-                                                indent=(" " * 22), indent_first=False)
     if algo == "generic":
         yield '        if all(kwargs.get(name, None) is None for name in ["model_key", "path"]):'
         yield '                raise H2OValueError("At least one of [\\"model_key\\", \\"path\\"] is required.")'
